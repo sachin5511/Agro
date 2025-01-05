@@ -1,0 +1,12 @@
+.vegetable_img{
+    background-image: url("https://cdn.pixabay.com/photo/2015/05/04/10/16/vegetables-752153_1280.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 90%;
+    height: 50vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}

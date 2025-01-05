@@ -1,0 +1,91 @@
+.fruits_div,.vegetable_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh; /* Full viewport height */
+
+}
+.fruits_img{
+    background-image: url("https://cdn.pixabay.com/photo/2015/12/30/11/57/fruits-1114060_1280.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 90%;
+    height: 50vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.centered-text {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 40px;
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+
+  }
+
+  .filter_right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 380px;
+  }
+
+  .filter_dropdown{
+    display: flex;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .centered-text {
+      font-size: 2rem;
+    }
+
+    .filter {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter_dropdown {
+      margin-right: 30px;
+    }
+  }
+
+  .containerc {
+      display: flex; /* Use Flexbox for side-by-side layout */
+      flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+      gap: 10px;
+      margin-top: 10px;
+
+}
+
+/* Leftlayout styling */
+.left-layout {
+  flex: 1; /* Allows the Leftlayout to take available space */
+  min-width: 200px; /* Minimum width to maintain layout */
+}
+
+/* FruitsRl styling */
+.fruits-rl,.vegetable-rl {
+  flex: 4; /* Takes more space than Leftlayout */
+  min-width: 300px; /* Minimum width to maintain layout */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    align-items: center;
+    flex-direction: column; /* Stack elements on smaller screens */
+  }
+}

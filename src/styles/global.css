@@ -1,0 +1,200 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between!important;
+    align-items: center;
+    padding: 15px 30px!important;
+    background-color: #ffffff;
+    color: white;
+    position: relative; /* Ensures z-index applies */
+    z-index: 10; /* Makes sure the navbar is above other elements */
+}
+
+.nav-logo h2 {
+    color: #7EC850;
+    font-size: 28px;
+  }
+
+/* Links in the navbar */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: max-height 0.3s ease-out;
+}
+
+.nav-links a {
+    color: rgb(2, 2, 2);
+    text-decoration: none;
+    padding: 10px 20px;
+ 
+}
+
+.nav-links a:hover {
+    background-color: #45a049;
+    border-radius: 5px;
+}
+
+/* Responsive dropdown menu */
+.nav-dropdown {
+    color: black!important;
+    height: 48px;
+    position: relative;
+    padding: 12px 20px;
+    cursor: pointer;
+
+}
+
+.nav-dropdown:hover {
+    background-color: #45a049;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    margin: 0px -40px!important;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: flex;
+
+}
+
+.dropdown-menu a {
+    color: black!important;
+    text-decoration: none;
+    padding: 10px 13px 10px!important;
+}
+
+.dropdown-menu a:hover {
+    background-color: white!important;
+    color: #45a049!important;
+     
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .icon {
+    font-size: 22px;
+    color: #7EC850;
+    transition: color 0.3s;
+  }
+  
+  .icon:hover {
+    color: #FFC107;
+  }
+
+/* Buttons in the navbar */
+.nav-button {
+    padding: 10px 15px;
+    background-color: #45a049!important;
+    color: #4CAF50;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background-color: rgb(255, 85, 85)!important;
+    color: white;
+}
+
+/* Burger icon for mobile */
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.burger {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #daddda;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        z-index: 20; /* Ensure the menu is on top of other content */
+    }
+
+    .nav-links.open {
+        max-height: 400px;
+    }
+
+    .nav-toggle {
+        display: flex;
+        height: 50px;
+        width: 50px;
+        align-items: center;
+        background-color: #45a049;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .dropdown-menu {
+        position: relative;
+        top: 0;
+    }
+    .icons {
+        gap: 10px;
+    }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .dropdown-menu {
+        width: 200px;
+    }
+
+    /* Ensure the navbar is on top of other elements on tablets as well */
+    .navbar {
+        z-index: 10;
+    }
+
+    .nav-links {
+        z-index: 20;
+    }
+}
