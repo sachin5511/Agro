@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdArrowDropdown } from 'react-icons/io';
-import { FaSearch, FaShoppingBag, FaUser } from 'react-icons/fa';
-import { use } from 'react';
+import { FaShoppingBag, FaUser } from 'react-icons/fa';
+
 
 const AgroNavbar = ({ cartItem, userProfile }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +37,7 @@ const AgroNavbar = ({ cartItem, userProfile }) => {
       </div>
       <div className={`nav-links ${isOpen ? 'open' : ''}`}>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/about">Order History</Link>
 
         {/* Shop Dropdown */}
         <div
