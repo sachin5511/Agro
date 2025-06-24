@@ -1,9 +1,0 @@
-.carousel-caption {
-    padding: 20px;
-  }
-  
-  .carousel img {
-    height: 527px; /* Adjust height for responsive view */
-    object-fit: cover; /* Ensure images cover the area */
-  }
-  

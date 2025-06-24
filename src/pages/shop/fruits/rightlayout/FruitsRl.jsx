@@ -1,34 +1,69 @@
-import React from 'react'
-import ProductCard from '../../../../Component/productcard/ProductCard';
+import React, { useState, useMemo, useCallback, useContext } from 'react';
+import ProductCard from '../../../../Component/card/ProductCard';
+import ReactPaginate from 'react-paginate';
+import products from '../../../../Fruitsproduct';
 
 
-const FruitsRl = (props) => {
+const FruitsRl = ({ lowtoHighHandler, hightoLowHandler, searchItemData }) => {
 
-    const products = [
-        { id: 1, name: 'Apple 1Kg', price: 160.00, image: 'https://www.liveorganic.co.in/cdn/shop/files/apples_a12f9930-4700-479c-8edd-d5f8a3f8290a_220x@2x.jpg?v=1697945159' },
-        { id: 2, name: 'Grapes 1Kg', price: 75.00, image: 'https://cdn.pixabay.com/photo/2024/04/05/09/01/ai-generated-8676957_1280.png' },
-        { id: 3, name: 'Banana 1 dozen', price: 62.00, image: 'https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_1280.png' },
-        { id: 4, name: 'Cherry 250g', price: 65.00, image: 'https://cdn.pixabay.com/photo/2012/04/15/20/53/cherries-35288_1280.png' },
-        { id: 5, name: 'Pears 250g', price: 65.00, image: 'https://cdn.pixabay.com/photo/2012/04/26/19/35/pears-42897_1280.png' },
-        { id: 6, name: 'Strawberry 250g', price: 65.00, image: 'https://cdn.pixabay.com/photo/2012/04/18/12/54/strawberry-36949_1280.png' },
-    ];
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 12;
+  
+  const sortedFilteredProducts = useMemo(() => {
+    let result = [...products];
 
-    
-
-    if(props.lowtoHighHandler==="lowtohigh"){
-      products.sort((a, b) => a.price - b.price);
+    // Apply sorting
+    if (lowtoHighHandler === 'lowtohigh') {
+      result.sort((a, b) => a.price - b.price);
+    } else if (hightoLowHandler === 'hightolow') {
+      result.sort((a, b) => b.price - a.price);
     }
 
-    if(props.hightoLowhHandler==="hightolow"){
-      products.sort((a, b) => b.price - a.price);
+    // Apply filtering
+    if (searchItemData.trim() !== '') {
+      result = result.filter((product) =>
+        product.name.toLowerCase().startsWith(searchItemData.toLowerCase())
+      );
     }
+
+    return result;
+  }, [lowtoHighHandler, hightoLowHandler, searchItemData]);
+
+  // Memoized pagination logic
+  const currentItems = useMemo(() => {
+    const offset = currentPage * itemsPerPage;
+    return sortedFilteredProducts.slice(offset, offset + itemsPerPage);
+  }, [currentPage, sortedFilteredProducts]);
+
+  const pageCount = Math.ceil(sortedFilteredProducts.length / itemsPerPage);
+
+  // Stable function reference for page change
+  const handlePageChange = useCallback(({ selected }) => {
+    setCurrentPage(selected);
+  }, []);
+
   return (
-    <div className="product-grid">
-         {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-            ))}
-    </div>
-  )
-}
+    <div>
+      <div className="product-grid">
+        {currentItems.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
 
-export default FruitsRl
+      {/* Pagination */}
+      <ReactPaginate
+        previousLabel={'← Previous'}
+        nextLabel={'Next'}
+        pageCount={pageCount}
+        onPageChange={handlePageChange}
+        containerClassName={'pagination'}
+        previousLinkClassName={'prev-button'}
+        nextLinkClassName={'next-button'}
+        disabledClassName={'disabled'}
+        activeClassName={'active'}
+      />
+    </div>
+  );
+};
+
+export default FruitsRl;

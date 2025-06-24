@@ -10,3 +10,127 @@
     text-align: center;
     position: relative;
 }
+.pagination {
+    display: flex;
+    float: right;
+    justify-content: center;
+    list-style: none;
+    padding: 20px;
+    flex-wrap: wrap; /* Wrap items on small screens */
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination a {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    color: white;
+    border-radius: 2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .pagination .active a {
+    background: rgb(222, 95, 16);
+  }
+  
+  /* Previous Button */
+  .pagination .prev-button {
+    color: black;
+    background-color: #ffffff;
+    border-radius: 2px;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .pagination .prev-button:hover {
+    background: #e04e2b;
+    color: white;
+  }
+  
+
+  .pagination .next-button {
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .pagination .next-button:hover {
+    color: white;
+    background: #0056b3;
+  }
+  
+  .pagination .disabled a {
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 768px) {
+    .pagination {
+      justify-content: center; 
+      float: none; 
+      padding: 10px;
+    }
+  
+    .pagination li {
+      margin: 3px;
+    }
+  
+    .pagination a {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+  
+    .pagination .prev-button, 
+    .pagination .next-button {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .pagination {
+      flex-wrap: wrap;
+      padding: 5px;
+      float: right;
+    }
+  
+    .pagination a {
+      padding: 5px 8px; /* Even smaller buttons */
+      font-size: 12px;
+    }
+  
+    .pagination .prev-button, 
+    .pagination .next-button {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+  }
+
+@media (max-width: 768px) {
+    .vegetable_div {
+        height: auto; /* Adjust height for smaller screens */
+        padding: 10px; /* Add padding on smaller screens */
+    }
+
+    .vegetable_img {
+        width: 100%; /* Full width on smaller screens */
+        height: 40vh; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .vegetable_div {
+        flex-direction: column; /* Stack the divs vertically on very small screens */
+        height: auto;
+    }
+
+    .vegetable_img {
+        width: 100%;
+        height: 25vh; /* Further reduce height on very small screens */
+    }
+}

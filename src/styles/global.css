@@ -1,33 +1,38 @@
 /* General reset */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-}
-
 /* navbar */
 .navbar {
+    position: fixed!important;  
+    top: 0;
+    left: 0;    
+    width: 100%;
     display: flex;
-    justify-content: space-between!important;
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 30px!important;
-    background-color: #ffffff;
-    color: white;
-    position: relative; /* Ensures z-index applies */
-    z-index: 10; /* Makes sure the navbar is above other elements */
+    padding: 30px 100px;
+    background-color:aliceblue;
+    z-index: 1000;
+    transition: background-color 0.3s;
+    
 }
 
 .nav-logo h2 {
-    color: #7EC850;
+    color: #000000;
+    padding-left: 20px;
     font-size: 28px;
   }
 
 /* Links in the navbar */
 .nav-links {
+    
     display: flex;
     align-items: center;
     gap: 20px;
@@ -94,7 +99,7 @@ body {
 .icons {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
   }
   
   .icon {
@@ -152,7 +157,7 @@ body {
     }
 
     .nav-links.open {
-        max-height: 400px;
+        max-height: 100vh;
     }
 
     .nav-toggle {
